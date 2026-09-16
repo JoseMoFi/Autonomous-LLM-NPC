@@ -1,0 +1,17 @@
+{
+  "id": "A2",
+  "label": "Ablacion de sub-planes - goal simple indirecto, cantidad 2 (escenario de E2)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Collect 2 @wheat", "condition": "has_item(wheat, 2)" }
+    ]
+  },
+  "n_opt": 6,
+  "n_opt_derivation": "Igual que E2: MoveTo(zona) -> Search(wheat) -> (MoveTo+PickUp) x2. Solo referencia para eta_exec.",
+  "configs": ["SUB", "ATOM"],
+  "runs": { "SUB": 8, "ATOM": 8 },
+  "timeout_s": 270,
+  "notes": "Mismo mundo, goal y condicion que E2. Sin move_to_and_pickup, el LLM tiene que resolver la cantidad (2 recogidas) con acciones primitivas; es donde falla la unica sesion de E2 con sub-planes (qty 1 en vez de 2)."
+}

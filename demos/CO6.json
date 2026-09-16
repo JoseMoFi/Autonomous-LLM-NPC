@@ -1,0 +1,21 @@
+{
+  "title": "Ayuda en ambos sentidos",
+  "description": "El molinero necesita pan: se lo pide al panadero, que a su vez le pide la harina (delegación de profundidad 2 con arbitraje).",
+  "experiment": "CO6",
+  "build": "coop",
+  "npcs": 2,
+  "goals": {
+    "npc_miller": [
+      {
+        "nl": "Bake 1 @bread",
+        "condition": "has_item(bread, 1)"
+      }
+    ]
+  },
+  "env": {
+    "NPC_COORDINATION": "1",
+    "NPC_GOAL_ARBITRATION": "1",
+    "NPC_ARBITRATION_MODE": "rule"
+  },
+  "memory": "off"
+}

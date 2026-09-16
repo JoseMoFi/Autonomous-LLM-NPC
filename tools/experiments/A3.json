@@ -1,0 +1,17 @@
+{
+  "id": "A3",
+  "label": "Ablacion de sub-planes - goal complejo con receta (escenario de E3)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "n_opt": 8,
+  "n_opt_derivation": "Igual que E3: recoleccion de 2 wheat (6) + MoveTo(bakeri) + Craft(wheat, Bread_recipe). Solo referencia para eta_exec.",
+  "configs": ["SUB", "ATOM"],
+  "runs": { "SUB": 8, "ATOM": 8 },
+  "timeout_s": 270,
+  "notes": "Mismo mundo, goal y condicion que E3. La escalera de guards (step1b) sigue siendo determinista en ambos brazos; en ATOM el LLM rellena cada peldano con acciones primitivas (recoger 2 wheat, ir a bakeri, craftear) en lugar de llamar a move_to_and_pickup/craft_item."
+}

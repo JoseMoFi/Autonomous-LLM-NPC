@@ -1,0 +1,22 @@
+{
+  "title": "Memoria de planes: primera sesión",
+  "description": "Resuelve A4 planificando con el modelo y guarda los repertorios en plans/memory/runs/demo_memoria.",
+  "experiment": "memoria (A4)",
+  "build": "single",
+  "npcs": 1,
+  "goals": {
+    "npc_001": [
+      {
+        "nl": "Collect 2 @wheat",
+        "condition": "has_item(wheat, 2)"
+      },
+      {
+        "nl": "Bake 1 @bread",
+        "condition": "has_item(bread, 1)"
+      }
+    ]
+  },
+  "memory": "learn",
+  "memory_group": "memoria",
+  "env": {}
+}

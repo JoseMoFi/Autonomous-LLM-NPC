@@ -1,0 +1,13 @@
+{
+  "npcs": [
+    {
+      "npc_id": "npc_001",
+      "goals": [
+        { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+      ]
+    }
+  ],
+  "goals": [
+    { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+  ]
+}

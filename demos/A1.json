@@ -1,0 +1,17 @@
+{
+  "title": "Recolectar 1 trigo",
+  "description": "Un NPC va al campo, busca trigo, se desplaza hasta la casilla y lo recoge.",
+  "experiment": "A1",
+  "build": "single",
+  "npcs": 1,
+  "goals": {
+    "npc_001": [
+      {
+        "nl": "Collect 1 @wheat",
+        "condition": "has_item(wheat, 1)"
+      }
+    ]
+  },
+  "env": {},
+  "memory": "off"
+}

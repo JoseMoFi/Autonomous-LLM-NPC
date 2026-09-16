@@ -1,0 +1,24 @@
+{
+  "title": "Arbitraje resuelto por el modelo",
+  "description": "Igual que ARB-regla, pero la decisión de arbitraje la toma el modelo.",
+  "experiment": "arbitraje",
+  "build": "coop",
+  "npcs": 2,
+  "goals": {
+    "npc_miller": [
+      {
+        "nl": "Bake 1 @bread",
+        "condition": "has_item(bread, 1)"
+      }
+    ]
+  },
+  "env": {
+    "NPC_CANONICAL_REUSE": "1",
+    "NPC_CANONICAL_FAMILY": "1",
+    "NPC_COORDINATION_PLANNER": "family",
+    "NPC_COORDINATION": "1",
+    "NPC_GOAL_ARBITRATION": "1",
+    "NPC_ARBITRATION_MODE": "llm"
+  },
+  "memory": "off"
+}

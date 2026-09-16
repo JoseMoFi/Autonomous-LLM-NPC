@@ -1,0 +1,23 @@
+{
+  "id": "CO5",
+  "label": "Coordinacion planificada por el LLM - delegacion simple de ingrediente (escenario de E5)",
+  "npcs": 2,
+  "build_exe": "builds\\coop\\My project.exe",
+  "requires_world": "flour_item",
+  "goals": {
+    "npc_baker": [
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "env": {
+    "NPC_COORDINATION": "1",
+    "NPC_GOAL_ARBITRATION": "1",
+    "NPC_ARBITRATION_MODE": "rule"
+  },
+  "n_opt": 12,
+  "n_opt_derivation": "Igual que E5 (verificado con 5 sesiones reales X1): miller 2x(Search+MoveTo+PickUp)=6 + MoveTo(bakeri) + Craft(flour) + Drop(flour) = 9; baker MoveTo(punto) + PickUp(flour) + Craft(bread) = 3. Solo referencia para eta_exec.",
+  "configs": ["SUB", "ATOM", "DET"],
+  "runs": { "SUB": 6, "ATOM": 6, "DET": 6 },
+  "timeout_s": 720,
+  "notes": "Mismo mundo y reparto de recetas que E5 (npc_miller solo Flour_recipe, npc_baker solo Bread_from_flour_recipe y el unico goal). SUB y ATOM: el LLM planifica el goal del baker (pedir la harina y recogerla, ir a bakeri, craftear) y el goal de entrega que adopta el miller al aceptar (recolectar trigo, craftear harina); la entrega (.drop + aviso) es andamiaje. DET: familia determinista + plan de entrega (sin LLM de planificacion), referencia del mismo commit."
+}

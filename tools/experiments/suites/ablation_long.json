@@ -1,0 +1,10 @@
+{
+  "id": "ablation_long",
+  "label": "Fases 16-17 - tanda larga: ablacion de sub-planes A1-A5 con 16 repeticiones",
+  "experiments": ["A1", "A2", "A3", "A4", "A5"],
+  "configs": ["SUB", "ATOM"],
+  "config_builtin_subplans": { "SUB": true, "ATOM": false },
+  "runs": 16,
+  "seed": 18,
+  "notes": "Los mismos A1-A4 que ablation_builtins mas A5 (tres hornadas: Bake 3 @bread, un NPC). 5 x 2 x 16 = 160 sesiones; cada brazo abre 8 veces por experimento. La lista de sub-planes ablacionados la fija cada manifiesto si la declara (ninguno de A1-A5 la declara); si no, la por defecto de analyze_ablation (move_to_and_pickup, craft_item). Lanzador: tools/run_suite_long.ps1 (-MaxHours corta antes de empezar una repeticion nueva). Protocolo: DOC/Evaluacion/PROTOCOLO_ABLACION_SUBPLANES.md."
+}

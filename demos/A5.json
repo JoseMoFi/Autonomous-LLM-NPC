@@ -1,0 +1,17 @@
+{
+  "title": "Fabricar 3 panes",
+  "description": "Seis trigos y tres hornadas, volviendo al campo entre una y otra.",
+  "experiment": "A5",
+  "build": "single",
+  "npcs": 1,
+  "goals": {
+    "npc_001": [
+      {
+        "nl": "Bake 3 @bread",
+        "condition": "has_item(bread, 3)"
+      }
+    ]
+  },
+  "env": {},
+  "memory": "off"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Recolectar 2 trigos y fabricar 1 pan",
+  "description": "Dos objetivos encadenados en el mismo NPC.",
+  "experiment": "A4",
+  "build": "single",
+  "npcs": 1,
+  "goals": {
+    "npc_001": [
+      {
+        "nl": "Collect 2 @wheat",
+        "condition": "has_item(wheat, 2)"
+      },
+      {
+        "nl": "Bake 1 @bread",
+        "condition": "has_item(bread, 1)"
+      }
+    ]
+  },
+  "env": {},
+  "memory": "off"
+}

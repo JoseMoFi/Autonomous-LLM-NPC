@@ -1,0 +1,18 @@
+{
+  "id": "E2",
+  "label": "Goal simple indirecto (1 agente, sin memoria)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Collect 2 @wheat", "condition": "has_item(wheat, 2)" }
+    ]
+  },
+  "n_opt": 6,
+  "n_opt_derivation": "MoveTo(zona) -> Search(wheat) -> (MoveTo+PickUp) x2. Provisional (ver E1: no se controla la celda de spawn). El sistema NO necesita ExploreArea (zone_center es global desde el NPCProfile, ver corrección Fase 11 en PROTOCOLO_EXPERIMENTOS.md) — si el sistema lo emite igualmente, es la señal de eficiencia que este experimento busca revelar.",
+  "n_opt_verified": false,
+  "configs": ["M0"],
+  "runs": { "M0": 10 },
+  "timeout_s": 240,
+  "notes": "Encadena >=2 acciones atómicas y cantidad>1. N=10, config única (sin memoria)."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "E1",
+  "label": "Goal simple directo (1 agente, sin memoria)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Collect 1 @wheat", "condition": "has_item(wheat, 1)" }
+    ]
+  },
+  "n_opt": 3,
+  "n_opt_derivation": "Search(wheat) -> MoveTo(x,y) -> PickUp(wheat). Provisional: no se controla la celda de spawn del NPC (NPCFactory.spawnCells vive en la escena) — el spawn actual (0,0) puede quedar a Manhattan<=10 de farmland (rango default de Search), pero no está garantizado. Fijar el valor real ejecutando C1 una vez y contando acciones (ver PROTOCOLO_EXPERIMENTOS.md §2).",
+  "n_opt_verified": false,
+  "configs": ["M0"],
+  "runs": { "M0": 10 },
+  "timeout_s": 180,
+  "notes": "Baseline de eficiencia: goal alcanzable casi directamente con las acciones atómicas. N=10, config única (sin memoria, LLM puro)."
+}

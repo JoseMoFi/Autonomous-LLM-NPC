@@ -1,0 +1,17 @@
+{
+  "title": "Fabricar 1 pan",
+  "description": "Un NPC recolecta 2 trigos, va a la panadería y fabrica un pan.",
+  "experiment": "A3",
+  "build": "single",
+  "npcs": 1,
+  "goals": {
+    "npc_001": [
+      {
+        "nl": "Bake 1 @bread",
+        "condition": "has_item(bread, 1)"
+      }
+    ]
+  },
+  "env": {},
+  "memory": "off"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "E6",
+  "label": "Dos agentes, cooperacion bidireccional (miller pide bread, baker pide flour de vuelta)",
+  "npcs": 2,
+  "build_exe": "builds\\coop\\My project.exe",
+  "requires_world": "flour_item",
+  "goals": {
+    "npc_miller": [
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "n_opt": 15,
+  "n_opt_derivation": "FIJADO tras 10 sesiones reales (5 X2 + 5 X1, 2026-08-13, commit 40ed0cb, Fase 14 -- arbitraje resuelve el bloqueo de Fase 13): miller 2x(Search+MoveTo+PickUp)=6 [convencion E1/E2] + MoveTo(bakeri)+Craft(flour)+Drop(flour)=3 (subtotal 9) + baker MoveTo+PickUp(flour)+Craft(bread)+Drop(bread)=4 + miller MoveTo(recogida)+PickUp(bread)=2. Total 9+4+2=15. n_act real fue 19/19 identico en las 10 sesiones (0 varianza) -- la diferencia (4) es el reposicionamiento inicial de cada ciclo de recoleccion (2, convencion no acreditada en n_opt, igual que E1/E2) mas los 2 MoveTo(0,0) de apartarse tras cada entrega (fix Fase 12/13, commit 2b3631c) -- sobrecoste del protocolo, no de la tarea. eta_exec=15/19=0.789, consistente con el resto de la bateria (~0.75-0.8). El valor previo (24) era una estimacion provisional sin datos.",
+  "n_opt_verified": true,
+  "configs": ["X2", "X1"],
+  "runs": { "X2": 5, "X1": 5 },
+  "timeout_s": 400,
+  "notes": "npc_miller conoce SOLO Flour_recipe y tiene el UNICO goal (has_item(bread,1) -- algo que el mismo NO sabe hacer). npc_baker conoce SOLO Bread_from_flour_recipe, sin goal propio. Exige intercambio en AMBOS sentidos (miller entrega flour a baker, baker devuelve bread a miller) -- es el caso que mejor ilustra la cooperacion SMA. Fase 13 (commit 2b3631c): 0/5 con X1 SIN arbitraje -- limite arquitectonico caracterizado (una intencion activa por NPC, ver EVALUACION_RESULTADOS.md Sec.5). Fase 14 anade arbitraje de goals (preempcion): X2 = regla determinista de ciclo de espera (control), X1 = LLM con fallback a la regla. Se corre X2 primero para validar el mecanismo de preempcion sin el ruido de un LLM no determinista."
+}

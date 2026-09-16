@@ -1,0 +1,17 @@
+{
+  "title": "Recolectar 2 trigos",
+  "description": "Lo mismo que A1, repetido dos veces.",
+  "experiment": "A2",
+  "build": "single",
+  "npcs": 1,
+  "goals": {
+    "npc_001": [
+      {
+        "nl": "Collect 2 @wheat",
+        "condition": "has_item(wheat, 2)"
+      }
+    ]
+  },
+  "env": {},
+  "memory": "off"
+}

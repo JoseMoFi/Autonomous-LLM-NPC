@@ -1,0 +1,10 @@
+{
+  "id": "ablation_short",
+  "label": "Fases 16-17 - tanda corta de comprobacion: ablacion de sub-planes A1-A5 con 2 repeticiones",
+  "experiments": ["A1", "A2", "A3", "A4", "A5"],
+  "configs": ["SUB", "ATOM"],
+  "config_builtin_subplans": { "SUB": true, "ATOM": false },
+  "runs": 2,
+  "seed": 18,
+  "notes": "Los mismos experimentos, brazos y semilla que ablation_long, con 2 repeticiones: 5 x 2 x 2 = 20 sesiones, cada brazo abre 1 vez por experimento. Sirve para comprobar que todo funciona (A5 incluido) antes de lanzar la larga; con N=2 no hay potencia estadistica. Lanzador: tools/run_suite_short.ps1."
+}

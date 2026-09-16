@@ -1,0 +1,23 @@
+{
+  "id": "CO6",
+  "label": "Coordinacion planificada por el LLM - cooperacion bidireccional (escenario de E6)",
+  "npcs": 2,
+  "build_exe": "builds\\coop\\My project.exe",
+  "requires_world": "flour_item",
+  "goals": {
+    "npc_miller": [
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "env": {
+    "NPC_COORDINATION": "1",
+    "NPC_GOAL_ARBITRATION": "1",
+    "NPC_ARBITRATION_MODE": "rule"
+  },
+  "n_opt": 15,
+  "n_opt_derivation": "Igual que E6 (verificado con 10 sesiones reales X1/X2): miller gather+craft flour+drop = 9, baker MoveTo+PickUp(flour)+Craft(bread)+Drop(bread) = 4, miller MoveTo+PickUp(bread) = 2. Solo referencia para eta_exec.",
+  "configs": ["SUB", "ATOM", "DET"],
+  "runs": { "SUB": 6, "ATOM": 6, "DET": 6 },
+  "timeout_s": 960,
+  "notes": "Mismo reparto que E6: npc_miller tiene el unico goal (bread) y solo sabe hacer flour; npc_baker solo sabe hacer bread desde flour. Exige ayuda en los dos sentidos (profundidad 2) y arbitraje (regla determinista, fija en los tres brazos: no es la variable). SUB/ATOM: el LLM planifica el goal del miller (pedir el pan y recogerlo), la entrega del baker (pedir la harina, recogerla, ir a bakeri, craftear) y la entrega del miller (recolectar trigo, craftear harina). DET: referencia determinista del mismo commit."
+}

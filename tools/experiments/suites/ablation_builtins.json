@@ -1,0 +1,10 @@
+{
+  "id": "ablation_builtins",
+  "label": "Fase 16 - ablacion de sub-planes escritos a mano (move_to_and_pickup, craft_item)",
+  "experiments": ["A1", "A2", "A3", "A4"],
+  "configs": ["SUB", "ATOM"],
+  "config_builtin_subplans": { "SUB": true, "ATOM": false },
+  "runs": 8,
+  "seed": 16,
+  "notes": "Una sola config base; la unica variable es NPC_BUILTIN_SUBPLANS. run_suite.ps1 intercala los brazos dentro de cada repeticion y experimento y rota cual va primero (desfase inicial por experimento con semilla fija): con 8 repeticiones cada brazo abre 4 veces por experimento, y si la tanda se corta las repeticiones completas siguen balanceadas. Protocolo: DOC/Evaluacion/PROTOCOLO_ABLACION_SUBPLANES.md."
+}

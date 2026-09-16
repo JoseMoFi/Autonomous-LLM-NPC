@@ -1,0 +1,17 @@
+{
+  "id": "A1",
+  "label": "Ablacion de sub-planes - goal simple directo (escenario de E1)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Collect 1 @wheat", "condition": "has_item(wheat, 1)" }
+    ]
+  },
+  "n_opt": 3,
+  "n_opt_derivation": "Igual que E1: Search(wheat) -> MoveTo(x,y) -> PickUp(wheat). Solo referencia para eta_exec; la comparacion principal es SUB vs ATOM (exito, coste, causas).",
+  "configs": ["SUB", "ATOM"],
+  "runs": { "SUB": 8, "ATOM": 8 },
+  "timeout_s": 270,
+  "notes": "Mismo mundo, goal y condicion que E1. SUB = sistema con move_to_and_pickup/craft_item; ATOM = sin ellos (el LLM compone acciones primitivas). Unica variable entre brazos: NPC_BUILTIN_SUBPLANS. Suite: tools/experiments/suites/ablation_builtins.json."
+}

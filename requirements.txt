@@ -1,0 +1,11 @@
+spade==4.1.4
+spade-bdi==0.3.2
+spade-llm>=0.3.0,<0.4
+agentspeak==0.2.2
+pyjabber>=0.4.1
+networkx>=3.4
+aiohttp>=3.9
+mcp>=1.2          # Fase 6: servidor MCP de mundo/observabilidad (tools/mcp_world_server.py)
+pytest>=7.0
+pytest-asyncio>=0.23
+pytest-cov>=4.0

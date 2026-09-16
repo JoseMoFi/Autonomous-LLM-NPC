@@ -1,0 +1,18 @@
+{
+  "id": "A4",
+  "label": "Ablacion de sub-planes - dos goals en un agente (escenario de E4, sin memoria)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Collect 2 @wheat", "condition": "has_item(wheat, 2)" },
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "n_opt": 8,
+  "n_opt_derivation": "Igual que E4: 6 (gather de 2 wheat) + MoveTo(bakeri) + Craft, reutilizando el trigo del primer goal. Solo referencia para eta_exec.",
+  "configs": ["SUB", "ATOM"],
+  "runs": { "SUB": 8, "ATOM": 8 },
+  "timeout_s": 270,
+  "notes": "Goals de E4, pero SIN memoria (E4 original era M1->M2): aqui se mide la planificacion LLM de dos goals seguidos con y sin sub-planes. La sesion solo cuenta como exito si AMBOS goals se verifican en creencias."
+}

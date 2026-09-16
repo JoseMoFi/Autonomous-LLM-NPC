@@ -1,0 +1,11 @@
+{
+  "id": "coordination_builtins",
+  "label": "Fase 17 - coordinacion planificada por el LLM, con y sin sub-planes escritos a mano (escenarios E5/E6)",
+  "experiments": ["CO5", "CO6"],
+  "configs": ["SUB", "ATOM", "DET"],
+  "config_builtin_subplans": { "SUB": true, "ATOM": false, "DET": true },
+  "ablated_subplans": ["move_to_and_pickup", "craft_item", "obtain_from_peer", "collect_from_peer"],
+  "runs": 6,
+  "seed": 17,
+  "notes": "SUB vs ATOM es la comparacion principal (unica variable: sub-planes escritos a mano, incluidos los de coordinacion). DET es la referencia determinista del mismo commit (lo que hacian X1/X2). runs=6 es multiplo de 3: run_suite.ps1 rota que brazo va primero y cada uno abre 2 veces por experimento. Protocolo: DOC/Evaluacion/PROTOCOLO_COORDINACION_LLM.md."
+}

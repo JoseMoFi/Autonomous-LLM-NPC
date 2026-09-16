@@ -1,0 +1,19 @@
+{
+  "id": "E4",
+  "label": "Dos goals en un agente (simple + complejo), con memoria",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Collect 2 @wheat", "condition": "has_item(wheat, 2)" },
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "n_opt": 8,
+  "n_opt_derivation": "FIJADO tras 10 sesiones reales M1+M2 (2026-08-11, commit previo a 2b3631c): las trazas confirman que el segundo goal (bread) REUTILIZA el trigo ya recolectado para el primero (no vuelve a recolectar) -- 8 acciones para 2 wheat (igual que E2) + MoveTo(bakeri) + Craft = 10 acciones reales, identicas en las 10 sesiones. Con la convencion de n_opt de E1/E2 (sin credito por el reposicionamiento inicial, que si cuenta en n_act): 6 (gather, como E2) + 1 (MoveTo bakeri) + 1 (Craft) = 8 -> eta_exec=8/10=0.8, consistente con E1/E2/E3/E5. El valor previo (14 = suma de E2+E3 SIN reuso) era una cota superior deliberadamente conservadora que la ejecucion real desmiente: el sistema SI reutiliza el trigo entre goals de la misma familia.",
+  "n_opt_verified": true,
+  "configs": ["M1", "M2"],
+  "runs": { "M1": 5, "M2": 5 },
+  "timeout_s": 420,
+  "notes": "Valida que dos goals de la misma familia con bindings distintos (wheat, bread) coexisten sin interferencia (Fase 6.5) y cuantifica el coste marginal del segundo goal bajo reuso de memoria. Pares M1->M2 en el mismo run_dir, igual que E3."
+}

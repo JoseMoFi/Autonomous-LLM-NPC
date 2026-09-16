@@ -1,0 +1,11 @@
+{
+  "id": "memory_reuse",
+  "label": "Memoria de planes: A4/A5 x SUB/ATOM, primera sesion (planifica con el LLM) y segunda (reusa la memoria de la primera)",
+  "experiments": ["A4", "A5"],
+  "arms": ["SUB", "ATOM"],
+  "passes": ["M1", "M2"],
+  "config_builtin_subplans": { "SUB_M1": true, "SUB_M2": true, "ATOM_M1": false, "ATOM_M2": false },
+  "runs": 2,
+  "seed": 19,
+  "notes": "Cada repeticion corre, por experimento y brazo, un par M1 -> M2 que comparte directorio de memoria (plans/memory/runs/mem_<exp>_<brazo>_rep<N>): M1 arranca vacio, planifica y guarda; M2 carga el plan si M1 tuvo exito y lo reusa sin pedir plan al LLM. El orden de los brazos rota por repeticion (contrabalanceo); dentro del par, M1 siempre va antes. 2 x 2 x 2 x runs sesiones (runs=2: 16). Sin clave canonica: el sig de parse_goals es estable en A4/A5. Lanzador: tools/run_suite_memory.ps1; analisis: tools/analyze_memory.py."
+}

@@ -1,0 +1,10 @@
+experiment_id,base,treatment,n_base,n_treatment,success_base,success_treatment,fisher_p,mw_p_llm_calls,mw_p_n_act,mw_p_duration_s
+CO5,SUB,ATOM,6,6,6,5,1.0,0.0028,0.0025,0.0051
+CO5,SUB,DET,6,6,6,6,1.0,0.0013,1.0,0.0051
+CO5,ATOM,DET,6,6,5,6,1.0,0.0028,0.0025,0.0051
+CO6,SUB,ATOM,6,6,6,6,1.0,0.0043,0.0035,0.0051
+CO6,SUB,DET,6,6,6,6,1.0,0.0023,0.0246,0.0051
+CO6,ATOM,DET,6,6,6,6,1.0,0.0027,0.0022,0.0051
+(todos),SUB,ATOM,12,12,12,11,1.0,0.0,0.0,0.0
+(todos),SUB,DET,12,12,12,12,1.0,0.0,0.4674,0.0
+(todos),ATOM,DET,12,12,11,12,1.0,0.0,0.0,0.0

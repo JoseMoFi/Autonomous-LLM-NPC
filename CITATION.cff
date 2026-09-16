@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Si usas este software, cítalo con estos datos."
+title: "NPC autónomos con BDI y LLM"
+type: software
+authors:
+  - family-names: "Morera Figueroa"
+    given-names: "José"
+    affiliation: "Universidad Internacional Menéndez Pelayo"
+    orcid: "https://orcid.org/0009-0008-9970-7167"
+  - family-names: "Taverner Aparicio"
+    given-names: "Joaquín José"
+    affiliation: "Universitat Politècnica de València"
+    orcid: "https://orcid.org/0000-0002-5163-5335"
+repository-code: "https://github.com/JoseMoFi/Autonomous-LLM-NPC"
+license: MIT
+version: "1.0.0"
+date-released: "2026-09-16"
+keywords:
+  - BDI
+  - AgentSpeak
+  - large language models
+  - multi-agent systems
+  - SPADE
+  - NPC

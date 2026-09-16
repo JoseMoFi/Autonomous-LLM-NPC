@@ -1,0 +1,7 @@
+experiment_id,base,treatment,n_base,n_treatment,success_base,success_treatment,fisher_p,mw_p_llm_calls,mw_p_n_act,mw_p_duration_s
+A1,SUB,ATOM,16,16,16,15,1.0,0.0,0.3093,0.0
+A2,SUB,ATOM,16,16,16,16,1.0,0.0,1.0,0.0
+A3,SUB,ATOM,16,16,16,10,0.0177,0.0,0.0,0.0
+A4,SUB,ATOM,16,16,16,16,1.0,0.0,0.3485,0.0
+A5,SUB,ATOM,16,16,16,11,0.0434,0.0,0.1801,0.0122
+(todos),SUB,ATOM,80,80,80,68,0.0003,0.0,0.3222,0.0006

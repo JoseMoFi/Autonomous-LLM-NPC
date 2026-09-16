@@ -1,0 +1,21 @@
+{
+  "title": "El panadero pide harina",
+  "description": "El panadero solo sabe hacer pan a partir de harina: pide la harina al molinero, que la fabrica y se la entrega.",
+  "experiment": "CO5",
+  "build": "coop",
+  "npcs": 2,
+  "goals": {
+    "npc_baker": [
+      {
+        "nl": "Bake 1 @bread",
+        "condition": "has_item(bread, 1)"
+      }
+    ]
+  },
+  "env": {
+    "NPC_COORDINATION": "1",
+    "NPC_GOAL_ARBITRATION": "1",
+    "NPC_ARBITRATION_MODE": "rule"
+  },
+  "memory": "off"
+}

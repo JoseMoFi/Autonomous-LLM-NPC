@@ -1,0 +1,19 @@
+{
+  "id": "E5",
+  "label": "Dos agentes, delegacion simple de ingrediente (miller -> baker)",
+  "npcs": 2,
+  "build_exe": "builds\\coop\\My project.exe",
+  "requires_world": "flour_item",
+  "goals": {
+    "npc_baker": [
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "n_opt": 12,
+  "n_opt_derivation": "FIJADO tras 5 sesiones reales X1 (2026-08-11, commit 2b3631c): miller 2x(Search+MoveTo+PickUp)=6 [convencion E1/E2 -- sin credito por reuso de un unico Search] + MoveTo(bakeri)=1 + Craft(flour)=1 + Drop(flour)=1 = 9; baker MoveTo(punto)+PickUp(flour)+Craft(bread)=3. Total 9+3=12. NO incluye el MoveTo(0,0) de apartarse tras la entrega (fix Fase 12 commit 2b3631c) -- es sobrecoste del protocolo de coordinacion, no de la tarea, y se excluye de n_opt igual que se excluye el reposicionamiento inicial en E1/E2. n_act real fue 15/15/15/15/15 (0 varianza, 0 acciones redundantes) en las 5 sesiones -> eta_exec=12/15=0.80, consistente con E3 (0.8). El valor previo (21) era una sobreestimacion provisional (habria dado eta_exec=21/15=1.4, imposible).",
+  "n_opt_verified": true,
+  "configs": ["X1"],
+  "runs": { "X1": 5 },
+  "timeout_s": 300,
+  "notes": "npc_miller conoce SOLO Flour_recipe, sin goal propio. npc_baker conoce SOLO Bread_from_flour_recipe y tiene el UNICO goal. Requiere el item 'flour' (prefab + ItemSpawnRule) y NpcSpawnSpec con Miller.asset/BakerCoop.asset en celdas separadas, npcIdOverride=npc_miller/npc_baker -- ver PLAN_EJECUCION/FASE_13_BATERIA_EXPERIMENTAL.md §T0 y FASE_11_MULTIAGENTE_INDEPENDIENTE.md §T10. BLOQUEADO hasta completar esa autoria."
+}

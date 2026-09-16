@@ -1,0 +1,102 @@
+{
+  "_notes": "Documentacion de las configs (run_experiment.ps1/Set-ConfigEnv es quien las aplica). Las variables de ESCENARIO (p.ej. NPC_COORDINATION y el arbitraje en CO5/CO6) van en el campo env del manifiesto y se aplican despues de la config.",
+  "M0": {
+    "label": "LLM puro, sin memoria",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "0",
+      "NPC_CANONICAL_REUSE": "0",
+      "NPC_CANONICAL_FAMILY": "0",
+      "NPC_COORDINATION": "0"
+    }
+  },
+  "M1": {
+    "label": "memoria, sesión de aprendizaje",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "1",
+      "NPC_PLAN_MEMORY_REUSE": "0",
+      "NPC_CANONICAL_REUSE": "1",
+      "NPC_CANONICAL_FAMILY": "0",
+      "NPC_COORDINATION": "0"
+    }
+  },
+  "M2": {
+    "label": "memoria, sesión de reuso (requiere -MemoryDir del M1 emparejado)",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "1",
+      "NPC_PLAN_MEMORY_REUSE": "1",
+      "NPC_CANONICAL_REUSE": "1",
+      "NPC_CANONICAL_FAMILY": "0",
+      "NPC_COORDINATION": "0"
+    }
+  },
+  "C1": {
+    "label": "familia determinista (oráculo, cero LLM de planificación)",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "1",
+      "NPC_PLAN_MEMORY_REUSE": "0",
+      "NPC_CANONICAL_REUSE": "1",
+      "NPC_CANONICAL_FAMILY": "1",
+      "NPC_COORDINATION": "0"
+    }
+  },
+  "X1": {
+    "label": "coordinación NPC-NPC + arbitraje de goals vía LLM (Fase 14)",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "1",
+      "NPC_PLAN_MEMORY_REUSE": "0",
+      "NPC_CANONICAL_REUSE": "1",
+      "NPC_CANONICAL_FAMILY": "1",
+      "NPC_COORDINATION": "1",
+      "NPC_GOAL_ARBITRATION": "1",
+      "NPC_ARBITRATION_MODE": "llm"
+    }
+  },
+  "X2": {
+    "label": "coordinación NPC-NPC + arbitraje de goals vía regla determinista (Fase 14, control de X1)",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "1",
+      "NPC_PLAN_MEMORY_REUSE": "0",
+      "NPC_CANONICAL_REUSE": "1",
+      "NPC_CANONICAL_FAMILY": "1",
+      "NPC_COORDINATION": "1",
+      "NPC_GOAL_ARBITRATION": "1",
+      "NPC_ARBITRATION_MODE": "rule"
+    }
+  },
+  "SUB": {
+    "label": "Fases 16-17 - config base unica (LLM sin memoria, sin familia) CON sub-planes escritos a mano",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "0",
+      "NPC_CANONICAL_REUSE": "0",
+      "NPC_CANONICAL_FAMILY": "0",
+      "NPC_BUILTIN_TRIGGERS": "0",
+      "NPC_ISOLATE_CONTRACTS": "1",
+      "NPC_COORDINATION_PLANNER": "llm",
+      "NPC_BUILTIN_SUBPLANS": "1"
+    }
+  },
+  "ATOM": {
+    "label": "Fases 16-17 - misma config base SIN sub-planes escritos a mano (el LLM compone acciones primitivas)",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "0",
+      "NPC_CANONICAL_REUSE": "0",
+      "NPC_CANONICAL_FAMILY": "0",
+      "NPC_BUILTIN_TRIGGERS": "0",
+      "NPC_ISOLATE_CONTRACTS": "1",
+      "NPC_COORDINATION_PLANNER": "llm",
+      "NPC_BUILTIN_SUBPLANS": "0"
+    }
+  },
+  "DET": {
+    "label": "Fase 17 - referencia determinista para coordinacion (familia de planes + plan de entrega, sin LLM de planificacion)",
+    "env": {
+      "NPC_PLAN_MEMORY_ENABLED": "0",
+      "NPC_CANONICAL_REUSE": "1",
+      "NPC_CANONICAL_FAMILY": "1",
+      "NPC_BUILTIN_TRIGGERS": "0",
+      "NPC_ISOLATE_CONTRACTS": "1",
+      "NPC_COORDINATION_PLANNER": "family",
+      "NPC_BUILTIN_SUBPLANS": "1"
+    }
+  }
+}

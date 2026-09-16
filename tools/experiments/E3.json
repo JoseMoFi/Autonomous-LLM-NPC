@@ -1,0 +1,18 @@
+{
+  "id": "E3",
+  "label": "Goal complejo indirecto (bread), con y sin memoria",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Bake 1 @bread", "condition": "has_item(bread, 1)" }
+    ]
+  },
+  "n_opt": 8,
+  "n_opt_derivation": "Recoleccion de 2 wheat (6, ver E2) + MoveTo(bakeri) + Craft(wheat, Bread_recipe). Provisional — fijar ejecutando C1.",
+  "n_opt_verified": false,
+  "configs": ["M0", "M1", "M2", "C1"],
+  "runs": { "M0": 8, "M1": 8, "M2": 8, "C1": 3 },
+  "timeout_s": 300,
+  "notes": "Bloque mas informativo: compara planificacion desde cero (M0) contra aprender-y-reusar (M1->M2, pares en el MISMO run_dir) contra el oraculo determinista (C1, 0 llamadas LLM de planificacion). M1 y M2 se ejecutan en PARES: M1 con run nuevo, M2 con -MemoryDir apuntando a ESE run (lo hace run_experiment.ps1)."
+}

@@ -1,0 +1,17 @@
+{
+  "id": "A5",
+  "label": "Ablacion de sub-planes - tres hornadas: Bake 3 @bread (escenario de E3 repetido)",
+  "npcs": 1,
+  "build_exe": "builds\\single\\My project.exe",
+  "goals": {
+    "npc_001": [
+      { "nl": "Bake 3 @bread", "condition": "has_item(bread, 3)" }
+    ]
+  },
+  "n_opt": 24,
+  "n_opt_derivation": "3 x E3: por hornada, recoleccion de 2 wheat (6, convencion E2) + MoveTo(bakeri) + Craft(wheat, Bread_recipe) = 8. Solo referencia para eta_exec.",
+  "configs": ["SUB", "ATOM"],
+  "runs": { "SUB": 16, "ATOM": 16 },
+  "timeout_s": 270,
+  "notes": "Un solo NPC (npc_001, DebuggerBakeri: Bread_recipe = 2 wheat -> 1 bread en bakeri). 3 panes exigen 6 trigos y 3 crafteos, volviendo a farmland entre hornadas. El trigo se repone (regla de spawn: spawnMax 4 por zona, globalMax 5 contando inventario, un intento cada 50 ticks = ~10 s) y cada Craft destruye los 2 trigos consumidos, asi que nunca hacen falta mas de 2 a la vez. step1b construye la escalera de receta aunque una hornada de 1 pan (se re-inyecta hasta has_item(bread, 3)). La cooperacion entre NPC (antes A5: trigo -> harina -> pan) va en la suite de coordinacion (CO5/CO6). Suites: ablation_short / ablation_long."
+}
