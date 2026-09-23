@@ -21,6 +21,7 @@ Parámetros:
   -List                   Muestra las demos y termina.
   -NoSubplans             El modelo compone solo acciones primitivas (ATOM).
   -Deterministic          Planes generados sin el modelo (DET, demos de dos NPC).
+  -Visual                 Build con la capa de presentación (solo demos de dos NPC).
   -GoalsFile <ruta>       Objetivos propios en el formato de goals.json, en lugar de una demo.
   -Build single|coop      Build para -GoalsFile. Por defecto: single.
   -Model <nombre>         Modelo de Ollama (por defecto, el de settings.json).
@@ -30,6 +31,7 @@ param(
     [switch]$List,
     [switch]$NoSubplans,
     [switch]$Deterministic,
+    [switch]$Visual,
     [string]$GoalsFile = "",
     [ValidateSet("single", "coop")]
     [string]$Build = "single",
@@ -85,9 +87,18 @@ if ($GoalsFile) {
 
 if ($Deterministic -and $buildName -ne "coop") { throw "-Deterministic solo está disponible en las demos de dos NPC." }
 
+# La build de presentación (builds\demo) es la de dos NPC con una capa visual
+# encima: cámara fija, nombres, bocadillos y un panel de estado. La lógica no
+# cambia y las medidas del artículo salen de builds\coop.
+if ($Visual) {
+    if ($buildName -ne "coop") { throw "-Visual solo está disponible en las demos de dos NPC." }
+    $buildName = "demo"
+}
+
 $buildExe = "builds\$buildName\My project.exe"
 if (-not (Test-Path $buildExe)) {
-    throw "No se encuentra '$buildExe'. Descarga builds.zip de la última release y descomprímelo en la raíz del repositorio (deben quedar builds\single y builds\coop)."
+    $zip = if ($buildName -eq "demo") { "builds-demo.zip" } else { "builds.zip" }
+    throw "No se encuentra '$buildExe'. Descarga $zip de la última release y descomprímelo en la raíz del repositorio."
 }
 $buildExe = (Resolve-Path $buildExe).Path
 
@@ -138,6 +149,7 @@ $env:NPC_BUILTIN_TRIGGERS = "0"      # sin objetivos reactivos de ejemplo
 $env:NPC_ISOLATE_CONTRACTS = "1"     # no modifica src\plans\contracts
 $env:NPC_COORDINATION_PLANNER = "llm"
 $env:NPC_BUILTIN_SUBPLANS = if ($NoSubplans) { "0" } else { "1" }
+$env:NPC_UNITY_DEMO = if ($Visual) { "1" } else { "0" }   # capa visual de la build de presentación
 if ($Deterministic) {
     $env:NPC_CANONICAL_REUSE = "1"
     $env:NPC_CANONICAL_FAMILY = "1"

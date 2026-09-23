@@ -123,6 +123,27 @@ En `builds\single` hay un NPC (`npc_001`) que puede recolectar trigo y fabricar
 pan. En `builds\coop` hay dos: `npc_miller`, que solo sabe fabricar harina a
 partir de trigo, y `npc_baker`, que solo sabe fabricar pan a partir de harina.
 
+## Build de presentación
+
+Las builds anteriores muestran la vista de depuración, con la rejilla, las
+coordenadas de cada casilla y los paneles de estado. Para grabar o enseñar una
+demo hay una build alternativa, `builds-demo.zip`, que añade una capa visual:
+cámara fija sobre todo el mapa, zonas con nombre, un color y un nombre por NPC,
+un bocadillo con la acción en curso y un panel lateral con el objetivo, el
+estado y el inventario de cada uno.
+
+Descomprímela en la raíz del repositorio, de modo que quede `builds\demo`, y
+añade `-Visual`:
+
+```powershell
+run_demo.cmd -Demo CO6 -Visual
+```
+
+Es la build de dos NPC, así que `-Visual` solo se aplica a las demos de
+cooperación (`CO5` y `CO6`). La capa visual se activa con la variable
+`NPC_UNITY_DEMO=1`, no toca la lógica del sistema y las medidas del artículo
+salen de `builds\coop`.
+
 ## Configuración
 
 Los parámetros están en [`src/config/settings.json`](src/config/settings.json):
